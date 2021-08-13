@@ -1,5 +1,7 @@
 package com.tuncode.streams;
 
+import javax.swing.text.html.Option;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -66,6 +68,31 @@ public class Streams {
 
         oldestMale.ifPresent(System.out::println);
 
+        // ****************************************** OTHER EXAMPLES  ********************************************* //
+
+        List<Integer> arrList = Arrays.asList(10, 100, 20, 200);
+        List<Integer> arrListFiltered = arrList.stream()
+                .map(el -> el * 10 / 2)
+                .collect(Collectors.toList());
+        arrListFiltered.forEach(System.out::println);
+
+        List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd", "", "jkl", "");
+        long countedString = strings.stream()
+                .filter(el -> el.isEmpty())
+                .count();
+        System.out.println(countedString);
+
+        List<String> mappedFilteredSortedString = strings.stream()
+                .filter(el -> el.startsWith("a"))
+                .map(String::toUpperCase)
+                .sorted()
+                .collect(Collectors.toList());
+        mappedFilteredSortedString.forEach(System.out::println);
+
+        List<String> findFirst = strings.stream()
+                .findFirst()
+                .stream().collect(Collectors.toList());
+        System.out.println(findFirst);
 
     }
 
