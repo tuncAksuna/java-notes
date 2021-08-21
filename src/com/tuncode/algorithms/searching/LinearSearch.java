@@ -7,7 +7,7 @@ public class LinearSearch {
     public static void main(String[] args) {
 
         int[] myArr = {2, 3, 4, 10, 40};
-        // linearSearch(myArr, 2);
+        linearSearch(myArr, 2);
 
         int[][] myTwoDimensionalArr = {{32, 45, 35}, {53, 65, 67}, {43, 23, 76}};
 

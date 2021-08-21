@@ -7,7 +7,7 @@ public class BinarySearch {
         int[] myArr = {2, 3, 4, 10, 40};
 
         BinarySearch searching = new BinarySearch();
-        int result = searching.binarySearch(myArr, 0, myArr.length - 1,10 );
+        int result = searching.binarySearch(myArr, 0, myArr.length - 1, 4);
 
         if (result == -1) {
             System.out.println("Element not found");
@@ -20,7 +20,6 @@ public class BinarySearch {
 
         if (right >= left) {
             int middle = left + (right - 1) / 2;
-
             if (arr[middle] == element) {
                 return middle;
             } else if (arr[middle] > element) {
