@@ -1,13 +1,15 @@
 package com.tuncode.streams;
 
-import javax.swing.text.html.Option;
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Streams {
     public static void main(String[] args) {
+        // STREAMS CANNOT BE REUSED.
+
+        // WITH OBJECT ( PERSON )  ******************************************************************************
 
         // Java streams works on Collections. It is made for Collections
         List<Person> people = getPeople();
@@ -32,16 +34,19 @@ public class Streams {
         IntStream sortWithLimit = random.ints().limit(10).sorted();
         sortWithLimit.forEach(System.out::println);
 
-        // ALL MATCH() - everbody/everthing ???
-        boolean allMatch = people.stream().allMatch(el -> el.getAge() >= 30);
+        // ALL MATCH() - everbody/everything ???
+        boolean allMatch = people.stream()
+                .allMatch(el -> el.getAge() >= 30);
         System.out.println(allMatch);
 
         // ANY MATCH() - at least one data condition must meet
-        boolean anyMatch = people.stream().anyMatch(el -> el.getAge() <= 20);
+        boolean anyMatch = people.stream()
+                .anyMatch(el -> el.getAge() <= 20);
         System.out.println(anyMatch);
 
         // NONE MATCH()
-        boolean noneMatch = people.stream().noneMatch(el -> el.getName().equals("Lale"));
+        boolean noneMatch = people.stream()
+                .noneMatch(el -> el.getName().equals("Lale"));
         System.out.println(noneMatch);
 
         // MAX() - returns a OPTIONAL 'cause maybe it won't be able to find given data within collection
@@ -91,9 +96,15 @@ public class Streams {
 
         List<String> findFirst = strings.stream()
                 .findFirst()
-                .stream().collect(Collectors.toList());
+                .stream()
+                .collect(Collectors.toList());
         System.out.println(findFirst);
 
+        strings.stream()
+                .filter(el -> el.contains("c"))
+                .map(String::toUpperCase)
+                .limit(2)
+                .forEach((el) -> System.out.format("Data %s \n", el));
     }
 
     public static List<Person> getPeople() {

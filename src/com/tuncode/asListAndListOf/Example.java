@@ -10,7 +10,7 @@ public class Example {
         List<Integer> asList = Arrays.asList(1, 2, 30, 111);
         List<Integer> listOf = List.of(100, 2, 123, 11);
 
-        // 1) Arrays.asList is mutable . but List.of is immutable
+        // 1) Arrays.asList() is mutable but List.of() is immutable
         asList.set(0, 0); // no problem
         listOf.set(0, 0); //  Fails with UnsupportedOperationException
 
