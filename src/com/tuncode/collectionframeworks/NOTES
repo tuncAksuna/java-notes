@@ -1,0 +1,25 @@
+- SET'ler duplicate eleman izin vermez, Listler verir,Map ise yalnızca 'valuelar'ı duplicate etmeye izin verir.
+- LİST'ler elemanları ekleme sırasına göre tutar(insertion order), SET'ler ise inordered'dır. Ancak LINKEDHASHSET implemantasyonu insertion order TREESETLER ise ascending order(artan sırada) olarak tutar.
+
+    * NULL ELEMENTS
+- LIST'ler birden fazla null değer barındırabilirler.
+- SET'ler yalnızca bir null nesneyi barındırabilirler.
+- MAP'ler yalnızca bir 'key değerinin' null olmasına izin verirler.Ancak birden çok null 'value' olabilir.
+- HASHTABLE ise null key'e hiçbir şekilde izin vermez.
+
+    * HANGİSİ NE ZAMAN KULLANILMALI ?
+- Eğer elemanlara index kullanarak sık sık erişmemiz gerekiyorsa List.(ArrayList LinkedList'den bu konuda daha hızlıdır)
+- Eğer elemanları belirli bir sırada(in order) yürütmek istiyorsak List.
+- Eğer eklenen elemanların tekrar etmemesini(duplication) unique olmasını istiyorsak Set.(Eğer belirli bir sırasının da olmasını istersek TreeSet(ascending order) veya LinkedHashSet(insertion order) kullanabiliriz)
+
+    * MAPS
+- Duplicate key içermezler. Bir key bir kere barındırılmalıdır.
+- GENELDE database işlemlerinde kullanılır.
+- MAP interfacesi hem key hem de valuaları unique olarak tutar. Eğer keyleri duplicate etmeyeceksek ve valualar duplicate olabilecekse --> HashMap kullanabiliriz.(1,"A),(2,"A") gibi
+- TreeMap birden çok null 'value' izni verir.
+- LinkedHashMap , HashMap'ten daha çok depolama alanı gerektirir. Çünkü 'reference' da tutarlar. Bu LinkedListlerdeki mantıkla aynıdır.
+
+NOT !
+- LINKEDHASHMAP -> EKLEME SIRASINA GÖRE ( insertion order )
+- HASHMAP -> SIRASIZ ŞEKİLDE ( no ordering )
+- TREEMAP -> ANAHTARIN ARTIŞ SIRASINA GÖRE ( ascending order )
