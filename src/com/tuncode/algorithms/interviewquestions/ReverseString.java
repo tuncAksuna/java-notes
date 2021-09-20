@@ -5,11 +5,11 @@ public class ReverseString {
     public static void main(String[] args) {
 
         // JAVA program to reverse a string
-        reverseStringWithForLoop("Cem tunç aksunA");
+        reverseString("Cem tunç aksunA");
 
     }
 
-    public static void reverseStringWithForLoop(String stringData) {
+    public static void reverseString(String stringData) {
         String reversed = "";
 
         for (int i = stringData.length() - 1; i >= 0; i--) {
