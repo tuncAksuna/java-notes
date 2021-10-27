@@ -15,7 +15,7 @@
     * MAPS
 - Duplicate key içermezler. Bir key bir kere barındırılmalıdır.
 - GENELDE database işlemlerinde kullanılır.
-- MAP interfacesi hem key hem de valuaları unique olarak tutar. Eğer keyleri duplicate etmeyeceksek ve valualar duplicate olabilecekse --> HashMap kullanabiliriz.(1,"A),(2,"A") gibi
+- MAP interfacesi hem key hem de valuaları unique olarak tutar. Eğer keyleri duplicate etmeyeceksek ve valuelar duplicate olabilecekse --> HashMap kullanabiliriz.(1,"A"),(2,"A") gibi
 - TreeMap birden çok null 'value' izni verir.
 - LinkedHashMap , HashMap'ten daha çok depolama alanı gerektirir. Çünkü 'reference' da tutarlar. Bu LinkedListlerdeki mantıkla aynıdır.
 

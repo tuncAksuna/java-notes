@@ -1,6 +1,5 @@
 package com.tuncode.algorithms.searching;
 
-import com.tuncode.patterns.dependencyinjection.Main;
 
 public class LinearSearch {
 
@@ -19,7 +18,7 @@ public class LinearSearch {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == element) {
                 System.out.printf("Element '%d' found in the array and index %d ", arr[i], i);
-                return i;
+                return arr[i];
             }
         }
         System.out.printf("Element '%d' not found in the array", element);

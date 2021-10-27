@@ -1,7 +1,6 @@
 package com.tuncode.algorithms.sorting;
 
 
-import java.util.Arrays;
 
 public class BubbleSort {
 

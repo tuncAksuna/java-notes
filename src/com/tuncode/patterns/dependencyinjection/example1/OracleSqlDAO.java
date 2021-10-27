@@ -1,4 +1,4 @@
-package com.tuncode.patterns.dependencyinjection;
+package com.tuncode.patterns.dependencyinjection.example1;
 
 public class OracleSqlDAO extends BaseProduct {
 

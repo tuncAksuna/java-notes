@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 public class Streams {
     public static void main(String[] args) {
+
         // STREAMS CANNOT BE REUSED.
 
         // WITH OBJECT ( PERSON )  ******************************************************************************
@@ -58,7 +59,9 @@ public class Streams {
                 .ifPresent(System.out::println);
 
         // GROUP()
-        Map<Gender, List<Person>> groupByGender = people.stream().collect(Collectors.groupingBy(Person::getGender));
+        Map<Gender, List<Person>> groupByGender = people
+                .stream()
+                .collect(Collectors.groupingBy(Person::getGender));
 
         groupByGender.forEach(((gender, people1) -> {
             System.out.println(gender);
@@ -76,16 +79,18 @@ public class Streams {
         // ****************************************** OTHER EXAMPLES  ********************************************* //
 
         List<Integer> arrList = Arrays.asList(10, 100, 20, 200);
+
         List<Integer> arrListFiltered = arrList.stream()
                 .map(el -> el * 10 / 2)
                 .collect(Collectors.toList());
         arrListFiltered.forEach(System.out::println);
 
         List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd", "", "jkl", "");
-        long countedString = strings.stream()
+        List<String> countedString = strings.stream()
                 .filter(el -> el.isEmpty())
-                .count();
-        System.out.println(countedString);
+                .map(el -> el.replace("", "A"))
+                .collect(Collectors.toList());
+        System.out.println("Filtered and Mapped : " + countedString);
 
         List<String> mappedFilteredSortedString = strings.stream()
                 .filter(el -> el.startsWith("a"))
@@ -105,6 +110,15 @@ public class Streams {
                 .map(String::toUpperCase)
                 .limit(2)
                 .forEach((el) -> System.out.format("Data %s \n", el));
+
+
+        List<Integer> integerList = Arrays.asList(10, 20, 40, 1, 212, 51);
+        List<Integer> filterAndMap = integerList.stream()
+                .filter(el -> el > 10)
+                .map(elm -> (elm * 2) / 3)
+                .collect(Collectors.toUnmodifiableList());
+        System.out.println("Filter and map : " + filterAndMap);
+
     }
 
     public static List<Person> getPeople() {
@@ -115,4 +129,5 @@ public class Streams {
                 new Person("Mesut Özil", 47, Gender.MALE)
         );
     }
+
 }
