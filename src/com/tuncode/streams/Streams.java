@@ -116,7 +116,7 @@ public class Streams {
         List<Integer> filterAndMap = integerList.stream()
                 .filter(el -> el > 10)
                 .map(elm -> (elm * 2) / 3)
-                .collect(Collectors.toUnmodifiableList());
+                .collect(Collectors.toList());
         System.out.println("Filter and map : " + filterAndMap);
 
     }
