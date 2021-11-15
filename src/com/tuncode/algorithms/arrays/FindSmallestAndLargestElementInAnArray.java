@@ -5,20 +5,25 @@ public class FindSmallestAndLargestElementInAnArray {
     // Write Java Program to find smallest and largest element in an Array..
 
     public static void main(String[] args) {
-        int[] arr = {12, 56, 0, 89, 100, 343, 21, 234};
 
-        int small = arr[0];
-        int large = arr[0];
+        int[] myArr = {10, 0, 12, 9678, 51, 123, 14};
+        smallestLargest(myArr);
+
+    }
+
+    public static void smallestLargest(int[] arr) {
+        int largest = arr[0];
+        int smallest = arr[0];
+
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < small) {
-                small = arr[i];
-            } else if (arr[i] > large) {
-                large = arr[i];
+            if (arr[i] < smallest) {
+                smallest = arr[i];
+            } else if (arr[i] > largest) {
+                largest = arr[i];
             }
         }
-        System.out.format("Largest value in array %d \n", large);
-        System.out.format("Smallest value in array %d", small);
-
+        System.out.format("largest number in your array : %d ", largest);
+        System.out.format("smallest number in your array : %d ", smallest);
     }
 
 }
