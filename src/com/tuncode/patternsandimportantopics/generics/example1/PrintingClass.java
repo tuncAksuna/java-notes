@@ -1,4 +1,4 @@
-package com.tuncode.patternsandimportantopics.generics;
+package com.tuncode.patternsandimportantopics.generics.example1;
 
 /**
  * @param <E>

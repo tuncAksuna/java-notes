@@ -62,10 +62,10 @@ public class Pizza {
         }
     }
 
-    /**
-     * NE ZAMAN KULLANILIR ?
-     * 1) Eğer çok fazla parametre alan bir objemiz varsa bazı parametlerini mecburen "null" geçmek zorundaysak !
-     *  @ÖRNEK : new Pizza(20,true,true,null,null,null,null,true)
+    /*
+      NE ZAMAN KULLANILIR ?
+      1) Eğer çok fazla parametre alan bir objemiz varsa bazı parametlerini mecburen "null" geçmek zorundaysak !
+       @ÖRNEK : new Pizza(20,true,true,null,null,null,null,true)
 
      * 2) Farklı parametre kombinasyonlarına sahip "birden çok constructor" varsa ve hangilerini kullanacağımız konuları net değilse !
 

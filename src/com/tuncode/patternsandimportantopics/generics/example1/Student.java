@@ -1,4 +1,4 @@
-package com.tuncode.patternsandimportantopics.generics;
+package com.tuncode.patternsandimportantopics.generics.example1;
 
 public class Student {
     private String name;
