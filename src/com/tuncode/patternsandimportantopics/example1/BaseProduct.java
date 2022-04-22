@@ -1,4 +1,4 @@
-package com.tuncode.patterns.dependencyinjection.example1;
+package com.tuncode.patternsandimportantopics.example1;
 
 public class BaseProduct {
 

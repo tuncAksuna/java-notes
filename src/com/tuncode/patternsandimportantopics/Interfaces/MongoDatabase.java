@@ -1,4 +1,4 @@
-package com.tuncode.patterns.dependencyinjection.Interfaces;
+package com.tuncode.patternsandimportantopics.Interfaces;
 
 public class MongoDatabase implements Database {
 

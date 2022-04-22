@@ -1,4 +1,4 @@
-package com.tuncode.patterns.dependencyinjection.builderpattern;
+package com.tuncode.patternsandimportantopics.builderpattern;
 
 public class Pizza {
 

@@ -1,4 +1,4 @@
-package com.tuncode.patterns.dependencyinjection.builderpattern;
+package com.tuncode.patternsandimportantopics.builderpattern;
 
 public class PizzaMain {
     public static void main(String[] args) {
