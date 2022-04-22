@@ -1,5 +1,12 @@
 package com.tuncode.patternsandimportantopics.generics.example2;
 
+import com.tuncode.patternsandimportantopics.generics.example2.repoclasses.Animal;
+import com.tuncode.patternsandimportantopics.generics.example2.repoclasses.Clas;
+import com.tuncode.patternsandimportantopics.generics.example2.repoclasses.Planet;
+import com.tuncode.patternsandimportantopics.generics.example2.repository.AnimalRepository;
+import com.tuncode.patternsandimportantopics.generics.example2.repository.ClassesRepository;
+import com.tuncode.patternsandimportantopics.generics.example2.repository.PlanetRepository;
+
 public class Main {
     /*
      * Her repository için ayrı bir sınıf oluşturduk ve bu repositoryler aslında hepsi aynı işi yapıyor, hepsi database'e veri kaydediyor !

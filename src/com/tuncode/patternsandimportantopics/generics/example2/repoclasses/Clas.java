@@ -1,4 +1,4 @@
-package com.tuncode.patternsandimportantopics.generics.example2;
+package com.tuncode.patternsandimportantopics.generics.example2.repoclasses;
 
 public class Clas {
     private String clasName;
