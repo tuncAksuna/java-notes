@@ -15,5 +15,10 @@ public class Main {
         // for using the MySQL database
         databaseManager.delete(new MySQLDatabase());
 
+        // DEFAULT METHODS IN INTERFACE :
+        Database database = new MySQLDatabase();
+        System.out.println("Default method : " + database.defaultMethodDefining());
+
+
     }
 }
