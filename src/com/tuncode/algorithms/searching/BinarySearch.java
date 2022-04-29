@@ -6,17 +6,12 @@ public class BinarySearch {
 
         int[] myArr = {2, 3, 4, 10, 40};
 
-        BinarySearch searching = new BinarySearch();
-        int result = searching.binarySearch(myArr, 0, myArr.length - 1, 4);
+        int result = binarySearch(myArr, 0, myArr.length - 1, 4);
 
-        if (result == -1) {
-            System.out.println("Element not found");
-        } else {
-            System.out.println("Element found " + result);
-        }
+        System.out.println(result == -1 ? "Element not found" : "Element found : " + result);
     }
 
-    public static int binarySearch(int arr[], int left, int right, int element) {
+    public static int binarySearch(int[] arr, int left, int right, int element) {
 
         if (right >= left) {
             int middle = left + (right - 1) / 2;
