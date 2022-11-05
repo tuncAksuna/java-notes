@@ -8,6 +8,9 @@ package com.tuncode.patternsandimportantopics.factorypattern;
  * Nesneyi yaratma, newleme iþlemini Factory classýna veririz
  * Nesne yaratma iþlemi için bir interface tasarlanmasýný gerektirir ve alt sýnýflarýn nesne üretmesine olanak saðlar.
 
+ * Diðer bir deyiþle yazdýðýmýz programda birbirine benzeyen birden fazla sýnýf olabilir. Bu tür sýnýflarý oluþtururken her seferinde new operatörünü kullanmayýn ya da o sýnýflardan sanki birbirinden
+ * baðýmsýzmýþ gibi kod yazmayalým diye böyle bir örüntü tasarlamýþlar.
+
  */
 public class Main {
     public static void main(String[] args) {
