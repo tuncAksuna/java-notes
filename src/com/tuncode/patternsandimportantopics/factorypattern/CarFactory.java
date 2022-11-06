@@ -1,12 +1,11 @@
 package com.tuncode.patternsandimportantopics.factorypattern;
 
-import java.lang.reflect.InvocationTargetException;
 
 class CarFactory {
 
     public static Car createCar(String mark, String color, String price) throws UnsupportedOperationException {
 
-        Car car = null;
+        Car car = null; // bu interface üzerinden nesne yaratabileceðiz !
 
         if (mark.equalsIgnoreCase("BMW")) {
             car = new BMW(color, price);
