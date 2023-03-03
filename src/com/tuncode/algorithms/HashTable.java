@@ -13,7 +13,7 @@ import java.util.Hashtable;
  * - HashMap yalnýzca Iterator nesnesi ile dönülürken HashTable hem Iterator Hem Enumaretor ile dönülebilir.
  */
 
-public class HashTable {
+public class HashTable  {
     public static void main(String[] args) {
 
         Hashtable<Integer,String> hashtable = new Hashtable<>();
