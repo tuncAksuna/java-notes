@@ -9,14 +9,15 @@ public class ReverseString {
 
     }
 
-    public static void reverseString(String stringData) {
-        String reversed = "";
+    public static String reverseString(String stringData) {
+        StringBuilder reversed = new StringBuilder();
 
         for (int i = stringData.length() - 1; i >= 0; i--) {
             if (!stringData.isEmpty() && stringData.length() > 1) {
-                reversed = reversed + stringData.charAt(i);
+                reversed.append(stringData.charAt(i));
             }
-            System.out.println(reversed);
         }
+        System.out.println(reversed);
+        return reversed.toString();
     }
 }
