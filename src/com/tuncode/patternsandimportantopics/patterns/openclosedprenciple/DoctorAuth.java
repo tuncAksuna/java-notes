@@ -13,7 +13,7 @@ public class DoctorAuth implements IAuthService {
     }
 
 /*
-     // DoctorAuth nesnesi bu özelliðe sahip olmamasýna raðmen gereksiz yere bu metodu override etmiþtir !
+     // DoctorAuth nesnesi ISuspendAccountService interfacesini implemente ettiÄŸi iÃ§in bu metodu override edemez !
     @Override
     public void suspendAccount() {
         System.out.println("...");
