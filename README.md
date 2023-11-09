@@ -10,3 +10,6 @@
 * Builder pattern
 * Algorithms(Binary search, Linear search, Bubble sort, Insertion sort, Selection sort, Find duplicate characters etc.)
 * Generics
+
+* SOLID Prenciple (Singleton,Liskov, Open/closed, interface seggreation etc.)
+* Patterns (Builder, Factory, DI etc.)
