@@ -1,6 +1,6 @@
 package com.tuncode.patternsandimportantopics.patterns.openclosedprenciple;
 
-public class SoftwareDeveloperAuth implements IAuthService {
+public class SoftwareDeveloperAuth implements IAuthService,ISuspendAccountService {
 
     @Override
     public void authLogin() {
@@ -11,5 +11,10 @@ public class SoftwareDeveloperAuth implements IAuthService {
     public void authLogout() {
         System.out.println("Software Developer logout..");
 
+    }
+
+    @Override
+    public void suspendAccount() {
+        System.out.println("Suspend software developer account !");
     }
 }

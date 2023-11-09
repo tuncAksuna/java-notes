@@ -9,4 +9,8 @@ public class AuthService {
     void logout(IAuthService authService) {
         authService.authLogout();
     }
+
+    void suspendAccount(ISuspendAccountService iSuspendAccountService) {
+        iSuspendAccountService.suspendAccount();
+    }
 }

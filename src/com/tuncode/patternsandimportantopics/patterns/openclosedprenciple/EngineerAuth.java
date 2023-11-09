@@ -1,6 +1,6 @@
 package com.tuncode.patternsandimportantopics.patterns.openclosedprenciple;
 
-public class EngineerAuth implements IAuthService {
+public class EngineerAuth implements IAuthService, ISuspendAccountService {
 
     @Override
     public void authLogin() {
@@ -10,5 +10,10 @@ public class EngineerAuth implements IAuthService {
     @Override
     public void authLogout() {
         System.out.println("Engineer logout..");
+    }
+
+    @Override
+    public void suspendAccount() {
+        System.out.println("Suspend engineer account !");
     }
 }
