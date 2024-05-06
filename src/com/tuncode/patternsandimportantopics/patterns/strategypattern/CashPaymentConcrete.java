@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * @author caksuna on 6.05.2024 15:22
  */
-public class CashPaymentStrategy implements PaymentStrategy {
+public class CashPaymentConcrete implements PaymentStrategy {
 
     @Override
     public boolean pay(BigDecimal amount) {

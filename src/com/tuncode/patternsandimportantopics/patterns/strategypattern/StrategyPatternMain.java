@@ -17,7 +17,7 @@ public class StrategyPatternMain {
 
     public static void main(String[] args) {
 
-//        PaymentStrategy payment = new CashPaymentStrategy();
+//        PaymentStrategy payment = new CashPaymentConcrete();
         PaymentStrategyContex payment = new PaymentStrategyContex(new PayPalPaymentConcrete());
         payment.pay(BigDecimal.valueOf(12));
 
