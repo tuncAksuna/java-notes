@@ -1,6 +1,7 @@
 package com.tuncode.patternsandimportantopics.generics.example3;
 
 import com.tuncode.patternsandimportantopics.generics.example1.Student;
+import com.tuncode.patternsandimportantopics.generics.example1.Yonetici;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,6 +48,7 @@ public class Main {
             System.out.println("Value is Integer type");
         else
             System.out.println("Please enter a data !");
+        Yonetici mertYoneticisi = new Yonetici("IT","1231","MERT","INNOVA");
     }
 
     /*
