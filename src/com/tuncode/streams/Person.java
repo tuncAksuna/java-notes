@@ -5,11 +5,13 @@ public class Person {
     private String name;
     private int age;
     private Gender gender;
+    private Double salary;
 
-    public Person(String name, int age, Gender gender) {
+    public Person(String name, int age, Gender gender, Double salary) {
         this.name = name;
         this.age = age;
         this.gender = gender;
+        this.salary = salary;
     }
 
     public String getName() {
@@ -34,5 +36,13 @@ public class Person {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 }

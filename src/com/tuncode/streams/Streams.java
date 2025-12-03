@@ -123,10 +123,10 @@ public class Streams {
 
     public static List<Person> getPeople() {
         return List.of(
-                new Person("Cem Tunç AKSUNA", 20, Gender.MALE),
-                new Person("Selvi AKSUNA", 50, Gender.FEMALE),
-                new Person("Güvenç AKSUNA", 48, Gender.MALE),
-                new Person("Mesut Özil", 47, Gender.MALE)
+                new Person("Cem Tunç AKSUNA", 20, Gender.MALE, 1000.00),
+                new Person("Selvi AKSUNA", 50, Gender.FEMALE, 120.00),
+                new Person("Güvenç AKSUNA", 48, Gender.MALE, 12331.00),
+                new Person("Mesut Özil", 47, Gender.MALE, 1001.00)
         );
     }
 
