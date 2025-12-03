@@ -17,7 +17,7 @@ public class StringMethods {
         // The method returns 0 if the string is equal to the other string
         // < 0 if the string is lexicographically less than the other string , 0 if the string is lexicographically greater than the other string (more characters)
         // A value less than 0 is returned if the string is less than the other string (less characters) and a value greater than 0 if the string is greater than the other string (more characters).
-        // We can use Use "compareToIgnoreCase()" to compare two strings lexicographyically, ignoring lower case and upper case differences.
+        // We can use "compareToIgnoreCase()" to compare two strings lexicographyically, ignoring lower case and upper case differences.
         // We can use the "equals()" method to compare two strings without consideration of Unicode values.
         String compareTo1 = "Hello world compare to method";
         String compareTo2 = "Hello world";
