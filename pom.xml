@@ -7,6 +7,12 @@
     <name>java-notes</name>
     <url>https://maven.apache.org</url>
 
+    <modules>
+        <module>threads</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
