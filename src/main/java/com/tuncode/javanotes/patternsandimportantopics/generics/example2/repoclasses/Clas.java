@@ -1,0 +1,18 @@
+package com.tuncode.javanotes.patternsandimportantopics.generics.example2.repoclasses;
+
+public class Clas {
+    private String clasName;
+
+    public Clas(String clasName) {
+        this.clasName = clasName;
+    }
+
+    public String getClasName() {
+        return clasName;
+    }
+
+    @Override
+    public String toString() {
+        return clasName;
+    }
+}
