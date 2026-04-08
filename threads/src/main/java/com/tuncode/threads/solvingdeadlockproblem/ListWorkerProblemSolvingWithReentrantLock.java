@@ -2,6 +2,7 @@ package com.tuncode.threads.solvingdeadlockproblem;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
 
@@ -24,6 +25,62 @@ public class ListWorkerProblemSolvingWithReentrantLock {
      */
     private final ReentrantLock reentrantLock1 = new ReentrantLock();
     private final ReentrantLock reentrantLock2 = new ReentrantLock();
+
+    /**
+     * <p>
+     * If we use tryLock(time,timeUnit) method, we can set a timeout for the lock.
+     * </p>
+     * <p>
+     * “Try to get the lock; if it's occupied, don't wait—return ‘false’ immediately so I can move on to something else.”
+     * </p>
+     */
+    public void addListWithReentrantTryLockWithTimeOut() {
+        try {
+            // Wait up to 2 seconds to acquire the lock
+            if (reentrantLock1.tryLock(2, TimeUnit.SECONDS)) {
+                try {
+                    list1.add(random.nextInt(100));
+                    System.out.println("The lock was empty, so I grabbed it and added it!");
+                } finally {
+                    reentrantLock1.unlock();
+                }
+            } else {
+                System.out.println("The lock is currently in another thread; I can't wait, so I've given up!");
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    /**
+     *
+     * <p>
+     * If we use the tryLock () method (parameter-free), we can't set a timeout for the lock.
+     * <p>
+     * TRY YOUR LUCK: Check the doorknob; if it's open, go in; if it's locked, don't wait—turn around and leave.
+     * </p>
+     * <p>
+     * It NEVER blocks the main thread. It returns true or false immediately.
+     * </p>
+     * </p>
+     */
+    public void addListWithReentrantLockParameterFree() {
+        try {
+            // Wait up to 2 seconds to acquire the lock
+            if (reentrantLock1.tryLock(2, TimeUnit.SECONDS)) {
+                try {
+                    list1.add(random.nextInt(100));
+                    System.out.println("I waited patiently, the lock opened, and I added it!");
+                } finally {
+                    reentrantLock1.unlock();
+                }
+            } else {
+                System.out.println("I waited for 2 seconds, but the lock didn't open. I'm canceling the operation (Timeout)!");
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
 
     public void addList1() {
         /*
