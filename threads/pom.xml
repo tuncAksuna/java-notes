@@ -8,13 +8,7 @@
         <artifactId>java-notes</artifactId>
         <version>0.0.1</version>
     </parent>
-
     <artifactId>threads</artifactId>
-
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <name>threads</name>
 
 </project>
