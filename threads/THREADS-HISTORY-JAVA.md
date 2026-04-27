@@ -1,0 +1,64 @@
+# Java'da Eþzamanlýlýk (Concurrency) ve Thread Yönetiminin Evrimi
+
+Java'nýn baþýndan bugüne kadar verdiði en büyük savaþ **"Ýþlemciyi beklerken boþ yere meþgul etmemek (Blocking I/O)"** olmuþtur. Ýþte Java'nýn bu savaþtaki versiyonsal evrimi:
+
+---
+
+## ? Java 1.0 (1996) - Geleneksel (Platform) Thread Dönemi
+**Analoji: "Her müþteriye bir garson" (Senkron Dönem)**
+
+* **Mimari:** Ýþletim sisteminin (OS) çekirdeðine doðrudan baðlý olan **Birebir (1:1)** thread modelidir.
+* **Çalýþma Mantýðý (Senkron):** Bir iþlemi baþlatýr ve o bitene kadar asla baþka bir iþe geçmez (Örn: Çay suyunun kaynamasýný ocaðýn baþýnda dikilerek bekleyen aþçý).
+* **Problemler:** * **Maliyet:** Her thread OS üzerinde ~1MB bellek (Stack) kaplar ve oluþturulmasý zaman alýr.
+    * **Bloklanma:** Veritabaný veya að isteði (I/O) yapýldýðýnda thread iþletim sistemi seviyesinde kilitlenir. Baþka hiçbir iþ yapmadan öylece bekler.
+    * **Ölçeklenemezlik:** Binlerce eþzamanlý istek geldiðinde binlerce thread açamazsýnýz; sunucu çöker (`OutOfMemoryError`). Bu yüzden sýnýrlý "Thread Havuzlarý" (Örn: Tomcat'in 200 thread sýnýrý) kullanýlmak zorunda kalýndý.
+
+---
+
+## ? Java 5 (2004) - Asenkron Dünyaya Ýlk Adým
+**Analoji: "Restoran Sipariþ Fiþi" (`Future`)**
+
+* **Geliþim:** Bloklanma sorununu çözmek için `java.util.concurrent` paketi ve `Future` arayüzü eklendi.
+* **Çalýþma Mantýðý:** Bir iþi arka plana atarsýnýz ve size o iþin gelecekteki sonucunu temsil eden bir `Future` (Sipariþ Fiþi) verilir. Ana thread bu sýrada baþka iþler yapabilir.
+* **Problem:** Ýþi arka plana atmak güzeldi ama sonucunu almak için kasaya gidip `future.get()` dediðiniz an, **thread yine bloklanýyordu.** Yani asenkron baþlayan bir süreç, sonucu almak için tekrar senkron bekleme eziyetine dönüþüyordu.
+
+---
+
+## ? Java 8 (2014) - Modern Asenkron
+**Analoji: "Titreþimli Çaðrý Cihazý (Pager) ve Spagetti Kod" (`CompletableFuture`)**
+
+* **Geliþim:** Java 5'in yarým kalan iþini tamamlayan `CompletableFuture` geldi. *(Ayný dönemde daha karmaþýk akýþlar için Reactive Programming / WebFlux da popülerleþti).*
+* **Çalýþma Mantýðý:** Artýk sonucun gelmesini beklemiyorsunuz. Cihaza zincirleme talimatlar veriyorsunuz: *"Sipariþ hazýr olduðunda (`supplyAsync`), fiyatý hesapla (`thenApply`), sonra e-posta at (`thenAccept`)."* Tüm bu zincir arka plandaki (`ForkJoinPool`) thread'ler arasýnda, ana sistemi asla bloklamadan gerçekleþir.
+* **Problemler:** * **Okunabilirlik ve Yazým Zorluðu:** Senkron kodun o þiir gibi yukarýdan aþaðý akan sadeliði kayboldu. Yerini karmaþýk lambda fonksiyonlarý, callback'ler aldý ("Callback Hell").
+    * **Hata Ayýklama (Debug):** Hata fýrlatýldýðýnda `try-catch` kullanamýyordunuz (`.exceptionally()` gerekti) ve *stack trace* kaybolduðu için hatanýn nerede koptuðunu bulmak bir kabustu.
+
+---
+
+## ? Java 21 (2023) - Devrim: Sanal Ýþ Parçacýklarý
+**Analoji: "Sihirli Aþçý ve 4 Süper Garson" (Project Loom / `Virtual Threads`)**
+
+* **Geliþim:** Java ekibi, sadece yeni bir sýnýf eklemekle kalmadý, tüm JVM'i ve JDK'yý (I/O, `Thread.sleep` vb.) baþtan yazdý. Asenkronun yüksek performansý ile senkron kodun kolay yazýlabilirliðini birleþtirdi.
+* **Mimari:** Ýþletim sistemine deðil, doðrudan JVM'e baðlý **Çoka-Az (M:N)** model. Arka planda az sayýda taþýyýcý OS thread'i, milyonlarca Virtual Thread'i yönetir.
+* **Çalýþma Mantýðý (Sihir):** * Sýradan, senkron, adým adým ilerleyen geleneksel kod yazarsýnýz (`CompletableFuture`'larý çöpe atarsýnýz).
+    * Virtual thread, veritabaný veya að beklemesine (I/O) girdiði an JVM onu iþletim sistemi thread'inden **koparýr (Unmount)** ve Heap belleðine kaydeder.
+    * OS thread'i anýnda boþa çýkar ve diðer sanal thread'lere hizmet eder.
+    * Cevap gelince virtual thread tekrar müsait bir OS thread'ine baðlanýr (**Mount**) ve iþine devam eder.
+* **Dikkat Edilmesi Gerekenler:** * CPU yoðunluklu (video iþleme, þifreleme vb.) iþlerde kullanýlmaz (Çünkü zaten bekleme yoktur). Sadece **I/O yoðunluklu** iþlerde mükemmeldir.
+    * JNI veya `synchronized` bloklarý içinde I/O yapýlýrsa sanal thread, OS thread'ine yapýþýp kalýr (**Pinning**). Bu yüzden `ReentrantLock` tercih edilmelidir.
+
+---
+
+## ? Ekosistemin Uyumu: Spring Boot 3.2+ (Java 21 Sonrasý)
+**"Zahmetsiz Entegrasyon"**
+
+Java 21'in gücü, Spring framework'üne sadece tek bir satýr konfigürasyon ile entegre edildi.
+
+**application.properties:**
+```properties
+spring.threads.virtual.enabled=true
+```
+Etkisi: 
+1. Tomcat Sunucusu: Geleneksel 200 thread'lik havuz darboðazýndan kurtulup, gelen her HTTP isteði için yepyeni, anýnda çöpe atýlan bir Virtual Thread oluþturmaya baþlar.
+2. Arka Plan Görevleri: E-posta göndermek gibi iþlemler için kullanýlan @Async anotasyonu, karmaþýk thread havuzu ayarlarý gerektirmeden otomatik olarak Virtual Thread altyapýsýna geçer.
+
+Sistem, geliþtirici kodunu deðiþtirmeden anýnda ölçeklenebilir hale gelir.

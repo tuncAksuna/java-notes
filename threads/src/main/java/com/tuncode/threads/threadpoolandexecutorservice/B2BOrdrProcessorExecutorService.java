@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-import java.util.concurrent.*;
-
-public class B2BOrderProcessor {
+public class B2BOrdrProcessorExecutorService {
 
     public static void main(String[] args) {
         // Create a pool with exactly 3 worker threads
